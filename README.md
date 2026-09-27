@@ -196,7 +196,7 @@ Full methodology and results live in
 ## Installation (development)
 
 ```bash
-git clone https://github.com/nooriqbalx/gradus.git
+git clone https://github.com/nooriqbalx/Gradus.git
 cd gradus
 pip install -e ".[dev]"
 ```
