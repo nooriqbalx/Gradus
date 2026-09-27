@@ -1,0 +1,22 @@
+train: 1437 samples, test: 360 samples
+model parameters: 3,866
+epoch  1/15  train_loss=1.5584  train_acc=0.6448
+epoch  2/15  train_loss=0.5680  train_acc=0.9326
+epoch  3/15  train_loss=0.2906  train_acc=0.9624
+epoch  4/15  train_loss=0.1924  train_acc=0.9728
+epoch  5/15  train_loss=0.1449  train_acc=0.9792
+epoch  6/15  train_loss=0.1119  train_acc=0.9805
+epoch  7/15  train_loss=0.0909  train_acc=0.9875
+epoch  8/15  train_loss=0.0735  train_acc=0.9916
+epoch  9/15  train_loss=0.0626  train_acc=0.9944
+epoch 10/15  train_loss=0.0507  train_acc=0.9958
+epoch 11/15  train_loss=0.0452  train_acc=0.9951
+epoch 12/15  train_loss=0.0374  train_acc=0.9972
+epoch 13/15  train_loss=0.0321  train_acc=0.9979
+epoch 14/15  train_loss=0.0270  train_acc=0.9986
+epoch 15/15  train_loss=0.0233  train_acc=1.0000
+
+training time: 2.5s (15 epochs, CPU)
+final train loss: 0.0233
+final train accuracy: 1.0000
+held-out test accuracy: 0.9778

@@ -1,0 +1,11 @@
+sweep,width,depth,precision,peak_bytes_over_baseline
+memory,256,8,fp32,12592128
+memory,256,8,fp16,6296576
+memory,512,8,fp32,29377536
+memory,512,8,fp16,14689280
+memory,1024,8,fp32,75531264
+memory,1024,8,fp16,37766144
+memory,2048,8,fp32,218170368
+memory,2048,8,fp16,109085696
+memory,4096,8,fp32,704775168
+memory,4096,8,fp16,352388096

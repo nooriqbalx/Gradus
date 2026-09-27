@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gradus"
+version = "0.1.0"
+description = "Gradus: A CPU/GPU Differentiable Computing Framework"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Noor-ul-ain Iqbal", email = "iamnooriqbal@gmail.com" },
+]
+keywords = [
+    "deep-learning",
+    "autograd",
+    "automatic-differentiation",
+    "neural-networks",
+    "gpu",
+    "tensor",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+gpu = ["cupy-cuda12x>=12.0"]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+    "matplotlib>=3.8",
+    "pandas>=2.0",
+]
+# Only needed for an optional PyTorch cross-check (ROADMAP.md calls
+# this a nice-to-have, not a substitute for gradient checking) --
+# kept out of `dev` so CI and a normal contributor install don't pay
+# torch's ~700MB install cost for a comparison nothing in this repo
+# currently runs.
+compare = ["torch>=2.1"]
+
+[project.urls]
+Homepage = "https://github.com/nooriqbalx/gradus"
+Repository = "https://github.com/nooriqbalx/gradus"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]

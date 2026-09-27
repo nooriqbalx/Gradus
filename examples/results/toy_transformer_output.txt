@@ -1,0 +1,20 @@
+corpus length: 9269 chars, vocab size: 26
+model parameters: 18,842
+epoch  1/20  loss=2.5911
+epoch  2/20  loss=1.7636
+epoch  4/20  loss=0.4060
+epoch  6/20  loss=0.2661
+epoch  8/20  loss=0.2386
+epoch 10/20  loss=0.2184
+epoch 12/20  loss=0.2128
+epoch 14/20  loss=0.2055
+epoch 16/20  loss=0.2023
+epoch 18/20  loss=0.1960
+epoch 20/20  loss=0.1931
+
+training time: 82.6s (20 epochs, CPU)
+initial loss: 2.5911
+final loss: 0.1931
+
+sample continuation (illustrative, not a correctness metric):
+'the old library at night. waves crash gently on the sandy shore. rain falls softly o'

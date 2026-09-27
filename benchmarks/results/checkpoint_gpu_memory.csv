@@ -1,0 +1,11 @@
+depth,use_checkpoint,peak_bytes_over_baseline
+2,False,140302336
+2,True,100407808
+4,False,280079360
+4,True,111458304
+8,False,559633408
+8,True,186700288
+16,False,1118741504
+16,True,272918016
+32,False,2236957696
+32,True,359570432

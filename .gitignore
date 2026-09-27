@@ -1,0 +1,48 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Data / experiment artifacts
+data/
+*.pt
+*.pth
+*.npz
+
+# NOTE: benchmarks/results/ is intentionally NOT ignored (a Phase 0
+# guess that it would only ever hold disposable, regeneratable junk
+# turned out wrong once Phase 5 happened): BENCHMARK_REPORT.md embeds
+# the CSVs and PNGs in that directory as its actual evidence, measured
+# once on real Kaggle GPU hardware this repo can't regenerate on
+# demand -- ignoring it would silently break every image link in the
+# report the moment this repo is pushed.
