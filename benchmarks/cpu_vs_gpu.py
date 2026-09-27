@@ -1,10 +1,9 @@
 """
-CPU vs GPU benchmark sweeps (Phase 4's "initial benchmarking harness";
-the full write-up with a per-op relative-error table alongside this is
-Phase 5's job -- see ROADMAP.md).
+CPU vs GPU benchmark sweeps -- the full write-up with a per-op
+relative-error table alongside this lives in BENCHMARK_REPORT.md.
 
-Four sweeps, matching ROADMAP.md's Phase 5 validation criteria
-(tensor size, batch size, model depth, CNN vs. Transformer workload):
+Four sweeps, matching this project's validation criteria (tensor size,
+batch size, model depth, CNN vs. Transformer workload):
 
     1. matmul          -- square matmul forward+backward, size N x N,
                            N in SIZES. The purest "is the GPU actually
@@ -354,8 +353,9 @@ def main() -> None:
     if not GPU_AVAILABLE:
         print(
             "Running CPU-only. This is expected on the dev sandbox this project "
-            "was built in -- run this same script on a Kaggle GPU notebook to get "
-            "the CUDA column too. See KAGGLE_STEPS.md."
+            "was built in -- run this same script on a free Kaggle GPU notebook "
+            "(pip install cupy-cuda12x, matching the CUDA version nvidia-smi "
+            "reports) to get the CUDA column too."
         )
     print()
 

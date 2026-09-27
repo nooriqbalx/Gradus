@@ -13,11 +13,11 @@ NumPy whenever CuPy isn't importable, which is why the entire CPU code
 path (Phases 1-3, all 93 tests) is completely unaffected by whether
 CuPy is present -- the GPU path is additive, not a rewrite.
 
-Honesty note: the CUDA path in this file and in gradus.ops has NOT
-been run against a real GPU as of writing (no GPU in this dev
-environment) -- it's exercised for the first time on Kaggle. See
-ROADMAP.md's Phase 4 section and tests/test_gpu_parity.py for what to
-report back if something here needs a fix.
+This CUDA path was developed with no GPU in the dev environment, then
+verified for real on a Kaggle GPU notebook (2x Tesla T4) -- see
+tests/test_gpu_parity.py, which compares every layer's forward output
+and gradients between a CPU run and a GPU run from identical initial
+weights.
 """
 
 from __future__ import annotations
@@ -69,7 +69,7 @@ def array_module_for_device(device: str):
                 "device='cuda' requested but CuPy is not installed. Install it "
                 "with `pip install cupy-cuda12x` (or the cupy-cudaXXx build "
                 "matching your CUDA version) on a machine with an NVIDIA GPU "
-                "-- e.g. a Kaggle GPU notebook. See ROADMAP.md's Phase 4 notes."
+                "-- e.g. a free Kaggle GPU notebook."
             )
         if not cupy_available():
             raise RuntimeError(

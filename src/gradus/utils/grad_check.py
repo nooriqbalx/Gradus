@@ -2,10 +2,10 @@
 Gradient checking: verifying that each op's analytical backward rule
 agrees with a finite-difference approximation of the same function.
 
-This is the numerical-correctness leg of the project's evaluation
-(see ROADMAP.md, Phase 5) -- but the harness itself is built now, in
-Phase 1, so every op added from here on can be checked as it's
-written rather than trusted on faith until the end.
+This is the numerical-correctness leg of the project's evaluation (see
+BENCHMARK_REPORT.md) -- but the harness itself is built early, so
+every op added from here on can be checked as it's written rather
+than trusted on faith until the end.
 
 Method (standard central-difference check, e.g. CS231n's convention):
     for each input array x and each element x[i]:

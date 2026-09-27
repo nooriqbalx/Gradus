@@ -63,10 +63,10 @@ def one_hot(indices, num_classes: int, dtype=float) -> np.ndarray:
     try:
         xp.put_along_axis(out, indices[..., None], 1.0, axis=-1)
     except AttributeError:
-        # Some CuPy releases don't implement put_along_axis (unverified
-        # on a real GPU as of writing -- see ROADMAP.md's Phase 4
-        # notes); this fancy-index scatter is an exact equivalent for
-        # the last-axis case used here.
+        # Some CuPy releases don't implement put_along_axis; this
+        # fancy-index scatter is an exact equivalent for the last-axis
+        # case used here (verified correct on real CUDA hardware via
+        # tests/test_gpu_parity.py).
         grid = xp.indices(indices.shape)
         out[tuple(grid) + (indices,)] = 1.0
     return out

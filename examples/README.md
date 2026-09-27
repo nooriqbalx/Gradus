@@ -6,8 +6,11 @@ the saved output from an actual run of each.
 - `cnn_digits.py` / `cnn_digits.ipynb` -- a small CNN (Conv2d,
   BatchNorm2d, ReLU, Linear, CrossEntropyLoss, Adam, Trainer) on
   scikit-learn's `digits` dataset. **97.78% held-out test accuracy.**
-  (CIFAR-10 was the original plan; see `../ROADMAP.md`'s Phase 3 notes
-  for why `digits` was substituted in this dev sandbox.)
+  (CIFAR-10 was the original plan, substituted for `digits` to keep
+  scope achievable without a GPU in the dev sandbox and without
+  weakening the correctness claim -- the point is verifying the CNN's
+  forward/backward mechanics, not chasing a harder dataset's accuracy
+  ceiling.)
 - `toy_transformer.py` / `toy_transformer.ipynb` -- a small decoder-only
   `TransformerLM` trained as a char-level language model on an original
   synthetic corpus. **Loss 2.59 -> 0.19** over 20 epochs, generating

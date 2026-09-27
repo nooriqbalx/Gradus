@@ -1,9 +1,9 @@
 """
-Mixed-precision numerical-error and convergence study (Phase 7,
-CPU-only half of ROADMAP.md's "throughput/memory/convergence/
-numerical-error study vs. FP32" -- the throughput/memory half needs
-real GPU tensor-core hardware and lives in benchmarks/mixed_precision_gpu.py
-instead, run on Kaggle the same way Phase 4-5's cpu_vs_gpu.py was).
+Mixed-precision numerical-error and convergence study -- the CPU-only
+half of the full throughput/memory/convergence/numerical-error study
+vs. FP32. The throughput/memory half needs real GPU tensor-core
+hardware and lives in benchmarks/mixed_precision_gpu.py instead, run
+on a free Kaggle GPU notebook the same way cpu_vs_gpu.py was.
 
 Two independent studies:
 

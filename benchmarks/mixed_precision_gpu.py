@@ -1,8 +1,8 @@
 """
-Mixed-precision GPU throughput + memory benchmark (Phase 7 -- the real-
-hardware half of ROADMAP.md's "throughput/memory/convergence/
-numerical-error study vs. FP32"; the CPU-only convergence/numerical-
-error half lives in benchmarks/mixed_precision.py).
+Mixed-precision GPU throughput + memory benchmark -- the real-hardware
+half of the full throughput/memory/convergence/numerical-error study
+vs. FP32; the CPU-only convergence/numerical-error half lives in
+benchmarks/mixed_precision.py.
 
 This ONLY compares fp32 vs. fp16 ON CUDA -- unlike cpu_vs_gpu.py's
 CPU-vs-GPU sweeps, there is no interesting CPU throughput story for
@@ -10,9 +10,10 @@ fp16 here: NumPy has no hardware-accelerated float16 arithmetic (it's
 typically emulated via float32 internally, sometimes SLOWER than
 float32 on CPU), so the entire point of fp16 -- feeding real tensor-
 core hardware smaller operands -- only shows up on a real GPU. This
-project has no GPU in its dev sandbox (see ROADMAP.md's Phase 4
-verification history), so this script's CUDA path is, like
-cpu_vs_gpu.py's, unverified against real hardware until run on Kaggle.
+project has no GPU in its dev sandbox, so this script was written and
+dry-run verified there, then run for real on a Kaggle GPU notebook --
+see PHASE7_REPORT.md Section 1.7 for the full results (and a real
+measurement bug this run itself surfaced and fixed).
 
 Four throughput sweeps, matching cpu_vs_gpu.py's shape exactly (same
 architectures, same sizes) so the two reports are directly comparable:
@@ -58,7 +59,8 @@ def _require_gpu() -> None:
             "This script needs a real CUDA GPU (via CuPy) -- there is no CPU "
             "fallback here, unlike cpu_vs_gpu.py, because fp16 has no interesting "
             "throughput/memory story on CPU (see this module's docstring). Run it "
-            "on a Kaggle GPU notebook -- see KAGGLE_STEPS.md."
+            "on a free Kaggle GPU notebook (pip install cupy-cuda12x, matching "
+            "the CUDA version nvidia-smi reports)."
         )
 
 

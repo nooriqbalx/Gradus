@@ -23,7 +23,7 @@ Status: Phases 1-7 complete (autodiff engine, nn layers, Transformer,
 NumPy/CuPy backend abstraction, a full scientific evaluation,
 packaging/hygiene, mixed precision, and gradient checkpointing -- 138
 tests total (127 CPU + 11 GPU-only), all verified passing for real on
-a Kaggle GPU notebook, see ROADMAP.md). Functional
+a Kaggle GPU notebook). Functional
 correctness demonstrated on a CNN (digits, 97.78% held-out accuracy)
 and a Transformer LM (original synthetic corpus, loss 2.59 -> 0.19).
 See BENCHMARK_REPORT.md (Phase 5) and PHASE7_REPORT.md (Phase 7) for

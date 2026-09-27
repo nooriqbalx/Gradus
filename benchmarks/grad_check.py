@@ -3,8 +3,8 @@ Full gradient-check report (Phase 5).
 
 Runs every Phase 1 primitive op and every Phase 2-3 composed layer
 through finite-difference gradient checking and renders the result as
-one Markdown table -- the "per-op relative error table" ROADMAP.md's
-Phase 5 calls for. This is a reporting script, not a test: the
+one Markdown table -- the per-op relative-error table this project's
+validation criteria calls for. This is a reporting script, not a test: the
 individual checks it runs already exist as pytest assertions across
 tests/test_ops.py, test_grad_check.py, test_layers.py, and
 test_attention.py (which is what actually gates CI-style correctness);

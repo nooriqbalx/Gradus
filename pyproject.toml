@@ -42,11 +42,11 @@ dev = [
     "matplotlib>=3.8",
     "pandas>=2.0",
 ]
-# Only needed for an optional PyTorch cross-check (ROADMAP.md calls
-# this a nice-to-have, not a substitute for gradient checking) --
-# kept out of `dev` so CI and a normal contributor install don't pay
-# torch's ~700MB install cost for a comparison nothing in this repo
-# currently runs.
+# Only needed for an optional PyTorch cross-check (a nice-to-have, not
+# a substitute for this project's own gradient checking) -- kept out
+# of `dev` so CI and a normal contributor install don't pay torch's
+# ~700MB install cost for a comparison nothing in this repo currently
+# runs.
 compare = ["torch>=2.1"]
 
 [project.urls]

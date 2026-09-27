@@ -1,8 +1,7 @@
 """
-Convergence curves (Phase 5) -- the "loss decreases, accuracy
-increases" leg of ROADMAP.md's validation criteria, rendered as plots
-rather than left as the raw epoch-by-epoch text in
-examples/results/*_output.txt.
+Convergence curves -- the "loss decreases, accuracy increases" leg of
+this project's validation criteria, rendered as plots rather than left
+as the raw epoch-by-epoch text in examples/results/*_output.txt.
 
 Parses the saved training logs from examples/cnn_digits.py and
 examples/toy_transformer.py (rather than hardcoding the numbers here,

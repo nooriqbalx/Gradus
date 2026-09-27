@@ -66,8 +66,8 @@ def test_zero_grad():
 def test_to_cpu_is_a_noop_roundtrip():
     """`.to("cpu")` on an already-CPU tensor is the well-defined case
     this sandbox (no GPU) can actually exercise; CPU/GPU parity itself
-    is covered by tests/test_gpu_parity.py, which skips here and runs
-    for real on a CUDA machine (see ROADMAP.md's Phase 4 notes)."""
+    is covered by tests/test_gpu_parity.py, which skips here and has
+    been run and verified for real on a Kaggle GPU notebook."""
     t = Tensor(np.array([1.0, 2.0, 3.0]), requires_grad=True)
     moved = t.to("cpu")
     assert isinstance(moved.data, np.ndarray)

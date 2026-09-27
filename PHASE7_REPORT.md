@@ -3,20 +3,21 @@
 **Gradus: A CPU/GPU Differentiable Computing Framework**
 Noor-ul-ain Iqbal, Beaconhouse National University
 
-ROADMAP.md scoped Phase 7 as a stretch goal with two options: mixed
+This phase was scoped as a stretch goal with two options: mixed
 precision (FP16/BF16) with its own throughput/memory/convergence/
 numerical-error study vs. FP32, or gradient checkpointing as an
 alternate. This project implements **both**.
 
-Like Phase 4-5, this splits into a CPU half (implemented, tested, and
-measured entirely in this project's CPU-only dev sandbox) and a GPU
-half (needs real CUDA tensor-core hardware and a real CUDA memory
-pool to mean anything -- run on Kaggle per `KAGGLE_STEPS.md`'s Phase 7
-addendum, the same free-GPU workflow Phase 4-5 used). **Both halves
-are now real, measured data** -- run on a Kaggle GPU notebook (2x
-Tesla T4) -- not transcribed by hand or estimated. The GPU run itself
-surfaced one real memory-measurement bug along the way (Section 1.7),
-fixed and re-verified before these numbers were recorded.
+Like the earlier CPU/GPU backend work, this splits into a CPU half
+(implemented, tested, and measured entirely in this project's
+CPU-only dev sandbox) and a GPU half (needs real CUDA tensor-core
+hardware and a real CUDA memory pool to mean anything -- run on a
+free Kaggle GPU notebook, the same workflow used earlier in the
+project). **Both halves are now real, measured data** -- run on a
+Kaggle GPU notebook (2x Tesla T4) -- not transcribed by hand or
+estimated. The GPU run itself surfaced one real memory-measurement
+bug along the way (Section 1.7), fixed and re-verified before these
+numbers were recorded.
 
 Everything in this report is regenerable: `benchmarks/mixed_precision.py`
 (numerical error + convergence, CPU), `benchmarks/mixed_precision_gpu.py`
@@ -435,7 +436,8 @@ the corrected numbers.)
 pip install -e ".[dev]"
 python benchmarks/mixed_precision.py --out benchmarks/results/mixed_precision_report.md
 python benchmarks/checkpoint_memory.py
-# GPU-only (Kaggle, see KAGGLE_STEPS.md's Phase 7 addendum):
+# GPU-only (run on a free Kaggle GPU notebook: pip install cupy-cuda12x
+# matching the CUDA version `nvidia-smi` reports, then):
 python benchmarks/mixed_precision_gpu.py
 python benchmarks/checkpoint_memory.py --gpu-memory
 pytest tests/test_dtype.py tests/test_amp.py tests/test_checkpoint.py -v

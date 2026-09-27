@@ -14,8 +14,9 @@ Full written analysis of everything these scripts produce lives in
   `python cpu_vs_gpu.py --quick` for a fast smoke test or
   `python cpu_vs_gpu.py` for the full sweep; see `--sweep` to run just
   one. Written and CPU-smoke-tested in the dev sandbox, then actually
-  run on a Kaggle GPU notebook (2x Tesla T4) -- see `../KAGGLE_STEPS.md`
-  to reproduce; results show up to 14.7x speedup at scale.
+  run on a free Kaggle GPU notebook (2x Tesla T4, `pip install
+  cupy-cuda12x` matching the CUDA version `nvidia-smi` reports) to
+  reproduce; results show up to 14.7x speedup at scale.
 - `grad_check.py` -- **done.** Runs every Phase 1-3 op/layer/loss
   through finite-difference gradient checking and renders one Markdown
   report table (30/30 checks passed). The individual checks already
@@ -44,8 +45,8 @@ Full written analysis of everything these scripts produce lives in
   the memory of fp32 at every width tested. The first Kaggle run of
   this script's memory sweep hit a real reference-cycle/`gc.collect()`
   bug (see `../PHASE7_REPORT.md` Section 1.7); fixed and re-verified.
-  Run `python mixed_precision_gpu.py --quick` on Kaggle; see
-  `../KAGGLE_STEPS.md`'s Phase 7 addendum.
+  Run `python mixed_precision_gpu.py --quick` on a free Kaggle GPU
+  notebook.
 - `checkpoint_memory.py` -- **done, verified on real GPU hardware.**
   Gradient checkpointing's wall-clock overhead on CPU (~1.1-1.7x
   across stack depths 2-32) always runs; `--gpu-memory` additionally

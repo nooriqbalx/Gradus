@@ -1,13 +1,11 @@
 """
-CPU/GPU numerical parity tests (Phase 4).
+CPU/GPU numerical parity tests.
 
 These are the tests that actually exercise CuPy against a real GPU --
 this dev sandbox has neither a GPU nor CuPy installed, so every test
-here is SKIPPED locally (see the pytestmark below) and runs for the
-first time on Kaggle. Nothing in this file has been run against a real
-GPU as of writing; see ROADMAP.md's Phase 4 section for the full
-context on what has and hasn't been verified, and KAGGLE_STEPS.md for
-exactly how to run this.
+here is SKIPPED locally (see the pytestmark below). All 11 tests here
+have been run for real on a Kaggle GPU notebook (2x Tesla T4) and pass
+-- see BENCHMARK_REPORT.md and PHASE7_REPORT.md for the full results.
 
 Method: build the SAME model twice from the SAME global RNG seed (so
 both copies start with identical initial weights), run one on CPU and

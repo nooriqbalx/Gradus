@@ -2,14 +2,13 @@
 Phase 3 functional-correctness demo #1: a small CNN trained on
 scikit-learn's `digits` dataset (1797 8x8 grayscale images, 10 classes).
 
-Why digits instead of CIFAR-10: the roadmap's original target was
-CIFAR-10, but this development environment has no GPU and no network
-access to download it (see ROADMAP.md's "Substitutions" note). digits
-ships inside scikit-learn (already a dependency-free local dataset --
-no download), so this proves the CNN stack (Conv2d, BatchNorm2d, ReLU,
-strided downsampling, Linear, CrossEntropyLoss, Adam, Trainer) trains
-correctly end-to-end without depending on network access. The full
-CIFAR-10 + GPU run happens in Phase 4-5 on Kaggle.
+Why digits instead of CIFAR-10: the original target was CIFAR-10, but
+this development environment has no GPU and no network access to
+download it. digits ships inside scikit-learn (already a
+dependency-free local dataset -- no download), so this proves the CNN
+stack (Conv2d, BatchNorm2d, ReLU, strided downsampling, Linear,
+CrossEntropyLoss, Adam, Trainer) trains correctly end-to-end without
+depending on network access. The full GPU run happens later, on Kaggle.
 
 Architecture note: downsampling uses a stride-2 Conv2d rather than a
 separate MaxPool layer (the "all-convolutional net" approach, Springenberg

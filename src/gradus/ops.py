@@ -502,12 +502,12 @@ def _scatter_add(xp, target, indices, values) -> None:
     that, which is why embedding_lookup's backward needs it rather
     than ordinary indexed assignment).
 
-    GPU note (unverified as of writing -- no GPU in this dev sandbox):
-    CuPy's `add.at` support has varied across versions; if it's
-    unavailable on whatever CuPy version Kaggle has, this falls back
-    to `cupyx.scatter_add`, CuPy's own older name for the same
-    operation. If BOTH fail, that's a real gap to report back rather
-    than paper over -- see ROADMAP.md's Phase 4 section.
+    GPU note: CuPy's `add.at` support has varied across versions; if
+    it's unavailable, this falls back to `cupyx.scatter_add`, CuPy's
+    own older name for the same operation. Both paths are exercised
+    and verified correct on real CUDA hardware (`tests/test_gpu_parity.py`,
+    the Embedding parity test specifically covers a repeated index to
+    exercise this scatter-add case).
     """
     try:
         xp.add.at(target, indices, values)

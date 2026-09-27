@@ -3,8 +3,8 @@
 **Gradus: A CPU/GPU Differentiable Computing Framework**
 Noor-ul-ain Iqbal, Beaconhouse National University
 
-This report is the project's flagship evidence artifact (ROADMAP.md,
-Phase 5): the full numerical-correctness, functional-correctness, and
+This report is the project's flagship evidence artifact: the full
+numerical-correctness, functional-correctness, and
 performance-characterization results for Gradus, a from-scratch
 tensor autodiff engine with a NumPy (CPU) / CuPy (GPU) backend
 abstraction. It answers the project's research question --
@@ -17,8 +17,8 @@ abstraction. It answers the project's research question --
 -- with results obtained on real hardware: development and CPU
 correctness work happened in a CPU-only sandbox; GPU correctness and
 all performance numbers below were measured on a Kaggle notebook with
-2x NVIDIA Tesla T4 GPUs (driver reporting CUDA 13.0, CuPy 14.0.1).
-Reproduction steps for both halves are in `KAGGLE_STEPS.md`.
+2x NVIDIA Tesla T4 GPUs (driver reporting CUDA 13.0, CuPy 14.0.1),
+a free-tier notebook anyone can reproduce this on.
 
 Everything in this report is regenerable: `benchmarks/grad_check.py`,
 `benchmarks/convergence_curves.py`, and `benchmarks/cpu_vs_gpu.py`
@@ -38,7 +38,7 @@ three. Full methodology, including two real gradient-checking pitfalls
 this project's own test suite surfaced (a mean-subtracting layer's
 output summing to ~0 by construction, and a parameter whose true
 gradient is legitimately zero), is documented in
-`gradus/utils/grad_check.py` and ROADMAP.md's Phase 3 notes.
+`gradus/utils/grad_check.py`.
 
 **Result: 30/30 checks passed.**
 
@@ -153,7 +153,7 @@ a full end-to-end `TransformerLM`, `CrossEntropyLoss`, and 5 steps of
 `Adam`. Every one of these matched CPU to within the ~1e-6 tolerance
 set in the test (both backends compute in float64 here).
 
-This closes the honesty gap noted in ROADMAP.md's Phase 4 section: the
+This closes an honesty gap worth naming: the
 GPU backend was implemented and dry-run verified (against a NumPy
 stand-in for CuPy) without ever touching real hardware, specifically
 *because* CuPy-specific API calls like `xp.add.at` and
@@ -165,8 +165,8 @@ was exercised and is correct.
 
 All numbers measured on Kaggle, 2x Tesla T4 (results use a single
 GPU; `benchmarks/cpu_vs_gpu.py` doesn't do multi-GPU splitting -- that
-would be a distributed-training concern, explicitly out of scope per
-ROADMAP.md). Each cell is the median of 10 timed repeats (5 for the
+would be a distributed-training concern, explicitly out of scope for
+this project). Each cell is the median of 10 timed repeats (5 for the
 Transformer sweep) after 3 (or 2) untimed warmup calls, with
 `cupy.cuda.Stream.null.synchronize()` after every GPU call so the
 timing reflects actual kernel completion, not just asynchronous
@@ -268,7 +268,7 @@ rather than a marketing number.
 | Performance characterization | Up to 14.7x GPU speedup at scale; GPU parity-to-slower below a workload-dependent threshold, consistently across 4 independent sweeps |
 
 Gradus is not attempting to match or beat PyTorch's performance --
-the goal, per ROADMAP.md, is a *correct, benchmarked* implementation of
+the goal is a *correct, benchmarked* implementation of
 the same underlying mechanics, evaluated with the same rigor a
 production framework's test suite would demand. All three forms of
 correctness (numerical, GPU-parity, functional) are independently
@@ -288,5 +288,6 @@ python examples/toy_transformer.py
 ```
 
 The GPU-dependent parts (`tests/test_gpu_parity.py`,
-`benchmarks/cpu_vs_gpu.py`) require a CUDA GPU and CuPy; see
-`KAGGLE_STEPS.md` for a free, step-by-step way to run them on Kaggle.
+`benchmarks/cpu_vs_gpu.py`) require a CUDA GPU and CuPy -- a free
+Kaggle GPU notebook (`pip install cupy-cuda12x`, matching whatever
+CUDA version `nvidia-smi` reports) is sufficient to reproduce them.

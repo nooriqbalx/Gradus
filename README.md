@@ -20,10 +20,10 @@ study of correctness and hardware performance.
 | **Memory** | fp16 uses *exactly* half the memory of fp32; gradient checkpointing saves up to **83.9%** peak GPU memory |
 | **Built from scratch** | no autodiff library, no PyTorch/TensorFlow underneath -- NumPy/CuPy is the only dependency doing array math |
 
-Full methodology and every number above: **[BENCHMARK_REPORT.md](BENCHMARK_REPORT.md)**
-(Phase 5) and **[PHASE7_REPORT.md](PHASE7_REPORT.md)** (Phase 7). Build
-plan and the real bugs found along the way: **[ROADMAP.md](ROADMAP.md)**.
-Full API reference: **[docs/API.md](docs/API.md)**.
+Full methodology and every number above, including the real bugs found
+along the way: **[BENCHMARK_REPORT.md](BENCHMARK_REPORT.md)** (Phase 5)
+and **[PHASE7_REPORT.md](PHASE7_REPORT.md)** (Phase 7). Full API
+reference: **[docs/API.md](docs/API.md)**.
 
 ## Why
 
@@ -164,8 +164,10 @@ Gradus is evaluated on three separate axes:
    an original synthetic corpus (**loss 2.59 -> 0.19**, generating
    coherent multi-sentence continuations, `examples/toy_transformer.py`).
    Convergence curves: `benchmarks/convergence_curves.py`. CIFAR-10 was
-   the original plan; see ROADMAP.md's Phase 3 notes for why `digits`
-   was substituted.
+   the original plan, substituted for `digits` to keep the project's
+   scope achievable within the timeline without weakening the
+   correctness claim (the point is verifying the CNN's forward/backward
+   mechanics, not chasing a harder dataset's accuracy ceiling).
 3. **Performance characterization + GPU correctness** -- CPU vs. GPU
    runtime across tensor size, model depth, batch size, and a full
    Transformer training step (`benchmarks/cpu_vs_gpu.py`), plus 9
@@ -174,8 +176,9 @@ Gradus is evaluated on three separate axes:
    two backends. **Both run for real on a Kaggle GPU notebook (2x
    Tesla T4): 9/9 parity tests passed, and GPU speedup reaches up to
    14.7x at scale** (with an honest look at where GPU is a wash or
-   slower on small workloads) -- see [KAGGLE_STEPS.md](KAGGLE_STEPS.md)
-   for the reproduction steps.
+   slower on small workloads) -- reproducible on any free Kaggle GPU
+   notebook (`pip install cupy-cuda12x`, matching whatever CUDA version
+   `nvidia-smi` reports).
 
 4. **Mixed precision + gradient checkpointing (Phase 7)** -- fp16
    numerical error measured directly against fp64 per layer, gradient
@@ -196,7 +199,7 @@ Full methodology and results live in
 ## Installation (development)
 
 ```bash
-git clone https://github.com/nooriqbalx/Gradus.git
+git clone https://github.com/nooriqbalx/gradus.git
 cd gradus
 pip install -e ".[dev]"
 ```
