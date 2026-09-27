@@ -12,7 +12,7 @@ float32 on CPU), so the entire point of fp16 -- feeding real tensor-
 core hardware smaller operands -- only shows up on a real GPU. This
 project has no GPU in its dev sandbox, so this script was written and
 dry-run verified there, then run for real on a Kaggle GPU notebook --
-see PHASE7_REPORT.md Section 1.7 for the full results (and a real
+see BENCHMARK_REPORT.md Section 5.7 for the full results (and a real
 measurement bug this run itself surfaced and fixed).
 
 Four throughput sweeps, matching cpu_vs_gpu.py's shape exactly (same

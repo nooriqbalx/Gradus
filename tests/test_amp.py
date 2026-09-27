@@ -106,8 +106,8 @@ def test_growth_and_backoff_factor_validation():
 def test_fp32_master_weights_survive_updates_too_small_for_fp16():
     # A tiny, repeated update: below float16's precision at this
     # magnitude, so a naive in-place fp16 update would never move the
-    # parameter at all (see PHASE7_REPORT.md's demonstration of
-    # exactly this). With the fp32 master shadow, progress
+    # parameter at all (see BENCHMARK_REPORT.md's Section 5.5
+    # demonstration of exactly this). With the fp32 master shadow, progress
     # accumulates invisibly until it crosses an fp16 rounding
     # boundary, at which point the visible fp16 value DOES move.
     p = Parameter(np.array([1000.0], dtype=np.float16))

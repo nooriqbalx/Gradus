@@ -26,8 +26,8 @@ class TransformerBlock(Module):
     are recomputed during backward() instead of being kept around
     between the forward and backward passes -- see
     gradus.utils.checkpoint's module docstring for the mechanism and
-    benchmarks/checkpoint_memory.py + PHASE7_REPORT.md for the measured
-    memory/compute trade-off. Purely a memory/compute trade: forward
+    benchmarks/checkpoint_memory.py + BENCHMARK_REPORT.md's Section 6
+    for the measured memory/compute trade-off. Purely a memory/compute trade: forward
     output and every gradient are numerically identical to
     use_checkpoint=False (tests/test_checkpoint.py verifies this
     directly), so it's safe to toggle without retraining or re-tuning

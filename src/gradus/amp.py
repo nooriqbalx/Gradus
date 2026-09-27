@@ -12,8 +12,9 @@ not just wave at:
        flush to exactly zero the moment backward() computes them,
        silently stalling learning for whichever parameters happened to
        have small gradients that step (which, empirically, is "a lot
-       of them" -- see PHASE7_REPORT.md's convergence study, where
-       plain fp16 with no loss scaling visibly stalls next to fp32).
+       of them" -- see BENCHMARK_REPORT.md's Section 5.6 convergence
+       study, where plain fp16 with no loss scaling visibly stalls
+       next to fp32).
        Fix: GradScaler below -- multiply the loss by a large constant
        before backward() (so every gradient in the chain is scaled up
        by the same constant, shifting the whole gradient distribution
@@ -34,10 +35,10 @@ not just wave at:
        update at full precision, only rounding down to float16 once,
        right before the next forward pass reads it.
 
-Both fixes are necessary; PHASE7_REPORT.md's convergence study
-demonstrates each failure mode in isolation (fp16 with no GradScaler;
-fp16 with GradScaler but no master weights) alongside the version with
-both fixes applied, matching fp32 convergence.
+Both fixes are necessary; BENCHMARK_REPORT.md's Section 5.6 convergence
+study demonstrates each failure mode in isolation (fp16 with no
+GradScaler; fp16 with GradScaler but no master weights) alongside the
+version with both fixes applied, matching fp32 convergence.
 """
 
 from __future__ import annotations

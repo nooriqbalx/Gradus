@@ -5,7 +5,7 @@ These are the tests that actually exercise CuPy against a real GPU --
 this dev sandbox has neither a GPU nor CuPy installed, so every test
 here is SKIPPED locally (see the pytestmark below). All 11 tests here
 have been run for real on a Kaggle GPU notebook (2x Tesla T4) and pass
--- see BENCHMARK_REPORT.md and PHASE7_REPORT.md for the full results.
+-- see BENCHMARK_REPORT.md for the full results.
 
 Method: build the SAME model twice from the SAME global RNG seed (so
 both copies start with identical initial weights), run one on CPU and
@@ -284,9 +284,9 @@ def test_fp16_linear_parity_cpu_vs_gpu():
     -- float16 has roughly 3 decimal digits of precision, and CPU vs.
     GPU can legitimately sum a matmul's reduction axis in a different
     order, so small differences here are expected and not a bug (see
-    PHASE7_REPORT.md's numerical-error study for how loose fp16
-    agreement really needs to be, and why this project doesn't try to
-    make fp16 CPU and GPU bit-identical)."""
+    BENCHMARK_REPORT.md's Section 5.3 numerical-error study for how
+    loose fp16 agreement really needs to be, and why this project
+    doesn't try to make fp16 CPU and GPU bit-identical)."""
     rtol, atol = 5e-2, 5e-2
 
     np.random.seed(14)

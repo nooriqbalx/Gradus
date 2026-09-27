@@ -26,8 +26,7 @@ tests total (127 CPU + 11 GPU-only), all verified passing for real on
 a Kaggle GPU notebook). Functional
 correctness demonstrated on a CNN (digits, 97.78% held-out accuracy)
 and a Transformer LM (original synthetic corpus, loss 2.59 -> 0.19).
-See BENCHMARK_REPORT.md (Phase 5) and PHASE7_REPORT.md (Phase 7) for
-the full evaluation.
+See BENCHMARK_REPORT.md for the full evaluation.
 """
 
 from gradus import ops  # noqa: F401  (attaches operator overloads onto Tensor)

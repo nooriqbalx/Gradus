@@ -22,7 +22,8 @@ only paid during backward()) for memory (that sublayer's internal
 activations are never held simultaneously with the rest of the
 network's -- see benchmarks/checkpoint_memory.py for the measured
 trade-off on real GPU memory via CuPy's memory pool, and
-PHASE7_REPORT.md for the numbers). It is exactly transparent
+BENCHMARK_REPORT.md's Section 6.3 for the numbers). It is exactly
+transparent
 numerically -- checkpointed and non-checkpointed forward/backward
 produce identical output and identical gradients from the same
 weights and inputs (see tests/test_checkpoint.py) -- because it

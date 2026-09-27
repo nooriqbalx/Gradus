@@ -168,8 +168,8 @@ class Module:
         don't silently round away to nothing in fp16's ~3 decimal
         digits of precision. Combine with gradus.amp.GradScaler to also
         keep small gradients from underflowing fp16 during backward()
-        (see PHASE7_REPORT.md for the numerical-error study behind why
-        both pieces are needed, not just one)."""
+        (see BENCHMARK_REPORT.md's Section 5.3 numerical-error study
+        for why both pieces are needed, not just one)."""
         return self._cast(np.float16)
 
     def float(self) -> "Module":

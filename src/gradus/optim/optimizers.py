@@ -17,8 +17,8 @@ Phase 7 mixed-precision note -- the "update underflow" problem:
     away to nothing the moment `abs(update) < p.data`'s local float16
     precision, silently freezing that parameter. This is a *different*
     failure mode from gradient underflow and loss scaling does nothing
-    for it (PHASE7_REPORT.md's convergence study shows this happening
-    even with GradScaler enabled).
+    for it (BENCHMARK_REPORT.md's Section 5.6 convergence study shows
+    this happening even with GradScaler enabled).
 
     Fix: both optimizers below auto-detect any float16 parameter at
     construction time and keep an internal float32 "master weight"
@@ -93,8 +93,9 @@ class Optimizer:
         # parameter, None for everything else -- see module docstring.
         # use_master_weights=False exists ONLY to reproduce the
         # "update underflow" failure mode on purpose, for
-        # PHASE7_REPORT.md's ablation (GradScaler alone, no master
-        # weights, still stalls) -- leave it True for real training.
+        # BENCHMARK_REPORT.md's Section 5.6 ablation (GradScaler alone,
+        # no master weights, still stalls) -- leave it True for real
+        # training.
         self._master = []
         for p in self.parameters:
             if use_master_weights and _is_reduced_precision(p.data.dtype):

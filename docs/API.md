@@ -162,7 +162,7 @@ float16 once per step -- prevents small updates from rounding away to
 nothing on an already-float16 array. Has no effect on float32/float64
 parameters (byte-for-byte identical to Phase 1-6 behavior). Set to
 `False` only to deliberately reproduce that failure mode (see
-`PHASE7_REPORT.md`'s ablation).
+`BENCHMARK_REPORT.md`'s Section 5.6 ablation).
 
 ## `gradus.Trainer`
 
@@ -203,7 +203,7 @@ scaler.update()          # grow/backoff the scale factor
 
 Addresses gradient underflow only -- combine with the optimizers'
 `use_master_weights` (on by default) to also fix update underflow. See
-`PHASE7_REPORT.md` for why both are needed.
+`BENCHMARK_REPORT.md`'s Section 5 for why both are needed.
 
 ## `gradus._grad_mode` (Phase 7)
 

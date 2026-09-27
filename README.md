@@ -21,8 +21,7 @@ study of correctness and hardware performance.
 | **Built from scratch** | no autodiff library, no PyTorch/TensorFlow underneath -- NumPy/CuPy is the only dependency doing array math |
 
 Full methodology and every number above, including the real bugs found
-along the way: **[BENCHMARK_REPORT.md](BENCHMARK_REPORT.md)** (Phase 5)
-and **[PHASE7_REPORT.md](PHASE7_REPORT.md)** (Phase 7). Full API
+along the way: **[BENCHMARK_REPORT.md](BENCHMARK_REPORT.md)**. Full API
 reference: **[docs/API.md](docs/API.md)**.
 
 ## Why
@@ -190,16 +189,16 @@ Gradus is evaluated on three separate axes:
    measured (`benchmarks/checkpoint_memory.py`). GPU throughput/memory
    verified for real on a Kaggle notebook -- fp16 matmul up to 7.3x
    faster and exactly half the memory of fp32; checkpointing saves up
-   to 84% peak GPU memory at depth 32 -- see PHASE7_REPORT.md.
+   to 84% peak GPU memory at depth 32 -- see BENCHMARK_REPORT.md's
+   Sections 5-6.
 
 Full methodology and results live in
-**[BENCHMARK_REPORT.md](BENCHMARK_REPORT.md)** (Phase 5) and
-**[PHASE7_REPORT.md](PHASE7_REPORT.md)** (Phase 7).
+**[BENCHMARK_REPORT.md](BENCHMARK_REPORT.md)**.
 
 ## Installation (development)
 
 ```bash
-git clone https://github.com/nooriqbalx/gradus.git
+git clone https://github.com/nooriqbalx/Gradus.git
 cd gradus
 pip install -e ".[dev]"
 ```
@@ -252,13 +251,13 @@ docs/                API.md -- full public API reference           (Phase 6)
 .github/workflows/   ci.yml -- lint + test on Python 3.10-3.12     (Phase 6)
 ```
 
-`BENCHMARK_REPORT.md` (repo root) is the full Phase 5 write-up: every
+`BENCHMARK_REPORT.md` (repo root) is the single full write-up: every
 gradient-check result, both convergence curves, all 4 benchmark
-sweeps, and the GPU parity results, with discussion. `PHASE7_REPORT.md`
-is the Phase 7 write-up: mixed precision's numerical-error/underflow/
-convergence studies, gradient checkpointing's correctness proof +
-CPU overhead measurement, and both features' real GPU throughput/
-memory numbers from a Kaggle run. `examples/` also
+sweeps, and the GPU parity results (Sections 1-4), plus mixed
+precision's numerical-error/underflow/convergence studies and
+gradient checkpointing's correctness proof, CPU overhead measurement,
+and both features' real GPU throughput/memory numbers from a Kaggle
+run (Sections 5-6). `examples/` also
 ships a pre-executed `.ipynb` alongside each `.py` script, so the
 output/plots are readable without re-running anything.
 
